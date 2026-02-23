@@ -45,4 +45,15 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function wallets()
+    {
+        return $this->hasMany(Wallet::class);
+    }
+
+    // Accessor for Overall Balance
+    public function getTotalBalanceAttribute()
+    {
+        return $this->wallets()->sum('balance');
+    }
 }
