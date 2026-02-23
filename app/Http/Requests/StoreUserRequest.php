@@ -26,4 +26,15 @@ class StoreUserRequest extends FormRequest
             'email' => 'required|email|unique:users,email',
         ];
     }
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The name is required.',
+            'name.string' => 'The name must be a string.',
+            'name.max' => 'The name may not be greater than 255 characters.',
+            'email.required' => 'The email is required.',
+            'email.email' => 'The email must be a valid email address.',
+            'email.unique' => 'The email has already been taken.',
+        ];
+    }
 }

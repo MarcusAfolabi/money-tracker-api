@@ -25,4 +25,13 @@ class StoreWalletRequest extends FormRequest
             'name' => 'required|string|max:255',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'The wallet name is required.',
+            'name.string' => 'The wallet name must be a string.',
+            'name.max' => 'The wallet name may not be greater than 255 characters.',
+        ];
+    }
 }
