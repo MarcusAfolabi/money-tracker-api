@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // 2. Create multiple wallets for this user 
-        Wallet::factory()->count(3)->create([
+        Wallet::factory()->count(2)->create([
             'user_id' => $user->id
         ]);
 
