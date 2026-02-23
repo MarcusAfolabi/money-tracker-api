@@ -2,38 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTransactionRequest;
 use App\Models\Wallet;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\DB;
+
 class TransactionController extends Controller
 {
-    public function store(Request $request, Wallet $wallet): JsonResponse
+    public function store(StoreTransactionRequest $request, Wallet $wallet): JsonResponse
     {
-        $validated = $request->validate([
-            'amount' => 'required|numeric|min:0.01', // Positive amounts 
-            'type' => 'required|in:income,expense',  // Valid transaction type 
-            'description' => 'nullable|string|max:255',
-        ]);
+        $validated = $request->validated();
 
-        // Use a Database Transaction to ensure data integrity 
         return DB::transaction(function () use ($validated, $wallet) {
-            
             $transaction = $wallet->transactions()->create($validated);
 
-            // Update Wallet Balance 
-            if ($validated['type'] === 'income') {
-                $wallet->increment('balance', $validated['amount']);
-            } else {
-                $wallet->decrement('balance', $validated['amount']);
-            }
+            // Update Wallet Balance based on transaction type
+            $validated['type'] === 'income'
+                ? $wallet->increment('balance', $validated['amount'])
+                : $wallet->decrement('balance', $validated['amount']);
 
-            return $this->sendResponse(
-                $transaction, 
-                'Transaction recorded and wallet balance updated.', 
-                201
-            );
+            return $this->sendResponse($transaction, 'Transaction recorded successfully.', 201);
         });
     }
 }
