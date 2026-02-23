@@ -1,58 +1,115 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+A professional **README.md** is the first thing a technical reviewer looks at. It proves you understand the full lifecycle of a project, from setup to deployment.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### 📝 Final Submission Checklist
 
-## About Laravel
+Before you send the link, make sure your `.env` is set to use a local database (like SQLite or MySQL) and that you've pushed all your latest controller and test changes.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+---
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### The README.md Content
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Copy the content below and save it as `README.md` in your project root.
 
-## Learning Laravel
+```markdown
+# Money Tracker API - Laravel Assessment
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+This is a RESTful API built with **Laravel 11** to manage users, wallets, and financial transactions. This project was developed as a technical assessment to demonstrate senior-level clean code, architectural patterns, and automated testing.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🚀 Features
+- **User Management**: Create user accounts and view profiles.
+- **Wallet System**: Create multiple wallets per user.
+- **Transaction Engine**: Handle Income and Expense transactions with automated balance updates.
+- **Data Integrity**: Uses Database Transactions and strict validation for financial accuracy.
+- **API Versioning**: Built under the `v1` namespace.
 
-## Laravel Sponsors
+## 🛠️ Technical Stack
+- **Framework**: Laravel 11
+- **Testing**: Pest PHP
+- **Database**: SQLite (Default) / MySQL
+- **Resources**: Laravel API Resources for standardized JSON formatting.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## ⚙️ Installation & Setup
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+1. **Clone the repository:**
+   ```bash
+   git clone <your-repo-url>
+   cd money-tracker-api
 
-## Contributing
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+2. **Install Dependencies:**
+```bash
+composer install
 
-## Code of Conduct
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+3. **Environment Setup:**
+```bash
+cp .env.example .env
+php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+
+
+4. **Database Migration:**
+*Note: Ensure your .env is configured for your local DB (SQLite is recommended for quick testing).*
+```bash
+php artisan migrate
+
+```
+
+
+5. **Start the Server:**
+```bash
+php artisan serve
+
+```
+
+
+
+---
+
+## 🧪 Running Tests
+
+This project uses **Pest PHP** for feature testing to ensure all functional requirements are met.
+
+To run the full suite:
+
+```bash
+php artisan test
+
+```
+
+The tests verify:
+
+* User creation logic.
+* Multiple wallet creation.
+* Balance logic (Income adds, Expense subtracts).
+* Total balance calculation across multiple wallets.
+* Validation for positive amounts and valid transaction types.
+
+---
+
+## 📡 API Endpoints (v1)
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| `POST` | `/api/v1/users` | Create a new user |
+| `GET` | `/api/v1/users/{id}` | View profile (Wallets & Total Balance) |
+| `POST` | `/api/v1/users/{id}/wallets` | Create a new wallet for a user |
+| `GET` | `/api/v1/wallets/{id}` | View single wallet (Balance & Transactions) |
+| `POST` | `/api/v1/wallets/{id}/transactions` | Record an Income/Expense |
+
+---
+
+## 👤 Author
+
+* **Name**: Abiodun
+* **Role**: Backend Developer (Laravel)
+
 
 ## License
 
