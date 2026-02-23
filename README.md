@@ -1,15 +1,3 @@
-A professional **README.md** is the first thing a technical reviewer looks at. It proves you understand the full lifecycle of a project, from setup to deployment.
-
-### 📝 Final Submission Checklist
-
-Before you send the link, make sure your `.env` is set to use a local database (like SQLite or MySQL) and that you've pushed all your latest controller and test changes.
-
----
-
-### The README.md Content
-
-Copy the content below and save it as `README.md` in your project root.
-
 ```markdown
 # Money Tracker API - Laravel Assessment
 
@@ -34,7 +22,7 @@ This is a RESTful API built with **Laravel 11** to manage users, wallets, and fi
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/MarcusAfolabi/money-tracker-api
    cd money-tracker-api
 
 ```
