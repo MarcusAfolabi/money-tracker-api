@@ -13,7 +13,7 @@ This is a RESTful API built with **Laravel 11** to manage users, wallets, and fi
 ## 🛠️ Technical Stack
 - **Framework**: Laravel 11
 - **Testing**: Pest PHP
-- **Database**: SQLite (Default) / MySQL
+- **Database**: SQLite
 - **Resources**: Laravel API Resources for standardized JSON formatting.
 
 ---
